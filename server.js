@@ -1,9 +1,12 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-
+const express = require('express');
+// const bodyParser = require("body-parser");
 const app = express();
+app.use(express.json());
 
-app.use(bodyParser.json());
+
+const suppliersRouter = require ('./routes/supplier')
+app.use('./supplier', suppliersRouter)
+
 
 const sayHi = (req, res) => {
     res.send("Hi!");
