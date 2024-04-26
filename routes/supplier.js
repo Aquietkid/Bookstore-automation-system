@@ -2,32 +2,22 @@ const express = require('express')
 const mysql = require('mysql')
 const router = express.Router()
 
-var con = mysql.createConnection({
-    host: "mysql-bpe-project-aliimran20004-88bc.d.aivencloud.com",
-    port: "20419",
-    user: "avnadmin",
-    password: "AVNS_7dw5-zuiWf5KtkR9U0S",
-    database: "Test_ali"
-});
-
-
-
-
 // get book price
 
 router.get('/:id', (req, res) => {
 
     var con = mysql.createConnection({
-        host: "mysql-bpe-project-aliimran20004-88bc.d.aivencloud.com",
-        user: "avnadmin",
-        password: "AVNS_7dw5-zuiWf5KtkR9U0S",
-        database: "Test_ali"
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_DATABASE
     });
 
 
     con.connect(function (err) {
         if (err) throw err;
-        console.log("DB Connected!");
+        console.log('DB Connected!');
         var sql = 'SELECT * FROM Test_ali.Supplier;';
         con.query(sql, function (err, result) {
             if (err) throw err;
