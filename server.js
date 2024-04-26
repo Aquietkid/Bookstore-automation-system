@@ -1,19 +1,23 @@
-const express = require('express');
-// const bodyParser = require("body-parser");
+const express = require("express");
 const app = express();
+const router = express.Router();
+const cors = require("cors");
 app.use(express.json());
+app.use(cors());
 
 
-const suppliersRouter = require ('./routes/supplier')
-app.use('./supplier', suppliersRouter)
-
-
-const sayHi = (req, res) => {
-    res.send("Hi!");
-};
-
-app.get("/", sayHi);
-
-app.listen(5000, () => {
-    console.log(`Server is running on port 5000.`);
+const port = 20419;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}.`);
 });
+
+
+const suppliersRouter = require('./routes/supplier')
+app.use('/supplier', suppliersRouter)
+
+// Import and use routes
+// app.use('/', router);
+
+
+
+module.exports = router;

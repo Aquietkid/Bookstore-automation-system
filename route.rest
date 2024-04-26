@@ -1,1 +1,9 @@
-GET http://localhost:5000/supplier
+GET http://localhost:3000/supplier
+
+###
+
+GET http://localhost:3000/supplier/
+
+###
+
+GET http://localhost:20419/supplier/5
