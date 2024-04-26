@@ -7,7 +7,6 @@ app.use(express.json())
 const suppliersRouter = require('./routes/supplier')
 app.use('/supplier', suppliersRouter)
 
-
 app.listen(3000, () => {
     console.log('Server is running on port 3000.');
 });
