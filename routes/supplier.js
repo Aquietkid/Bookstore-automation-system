@@ -29,29 +29,32 @@ router.get('/:id', (req, res) => {
         if (err) throw err;
         const ItemID = req.params.id;
         // console.log('DB Connected!');
-        var sql = 'SELECT Item.Name , Supplier.Name, SupplierItem.Price ' +
+        var sql = 'SELECT Item.Name AS ItemName, Supplier.ID AS SupplierID, Supplier.Name AS SupplierName, SupplierItem.Price AS SupplierRate ' +
         'FROM SupplierItem '+
         'JOIN Supplier ON Supplier.ID = SupplierItem.SupplierID '+
         'JOIN Item ON Item.ID = SupplierItem.ItemID '+
         'WHERE ItemID = ?;';
         connection.query(sql, [ItemID], function (err, result) {
             if (err) throw err;
-            if(result.length == 0) {
-                res.send('No Supplier ships that item');
+            else if(result.length == 0) {
+                return res.send('No Supplier ships that item');
             }
-            if(result.length == 1) {
-                // If you only expect one result, you might want to send it directly
+            else if(result.length == 1) {
+                console.log('Returning the only row returned by DB');
                 return res.json({data: result[0]});
             } else {
-                // If you expect multiple results, you can send the array of results
                 var min = ({
-                    Name: result[0].Name, 
-                    Price: result[0].Price
+                    ItemName: result[0].ItemName, 
+                    SupplierID: result[0].SupplierID,
+                    SupplierName: result[0].SupplierName,
+                    SupplierRate: result[0].SupplierRate
                 })
                 result.forEach(element => {
-                    if(element.Price < min.Price){
-                        min.Name = element.Name;
-                        min.Price = element.Price;
+                    if(element.SupplierRate < min.SupplierRate){
+                        min.ItemName = element.ItemName;
+                        min.SupplierID = element.SupplierID;
+                        min.SupplierName = element.SupplierName;
+                        min.SupplierRate = element.SupplierRate;
                     }
                 });
                 return res.json({data: min});
