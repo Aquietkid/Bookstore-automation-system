@@ -16,13 +16,7 @@ GET http://localhost:20419/supplier/2
 ### 
 
 POST http://localhost:20419/inventory/add/item/itemName/200/12
-Content-Type: application/json
 
-{
-    "itemName": "testItem",
-    "price": 420,
-    "qty": 10
-}
 
 ###
 

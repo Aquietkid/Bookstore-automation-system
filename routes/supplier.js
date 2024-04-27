@@ -4,20 +4,6 @@ const router = express.Router()
 const connection = require("../config/persistence");
 
 
-
-
-// get item price
-
-/*
-    RESULT I WANT:
-    ItemName    SupplierName    Price
-    
-    PARAMS I GIVE: 
-    ItemID
-
-
-*/
-
 router.get('/:id', (req, res) => {
     connection.connect(function (err) {
         if (err) throw err;
@@ -54,14 +40,6 @@ router.get('/:id', (req, res) => {
             }
         });
     });
-})
-
-
-// get all books and their prices
-
-router.get('/', (req, res) => {
-    res.send('Hey, I will return the price of the book')
-
 })
 
 

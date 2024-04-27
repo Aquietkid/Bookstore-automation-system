@@ -18,12 +18,5 @@ app.use('/supplier', suppliersRouter)
 const inventoryRouter = require('./routes/inventory')
 app.use('/inventory', inventoryRouter)
 
-// const placeOrderRouter = require('./routes/placeOrder')
-// app.use('/placeOrder', placeOrderRouter)
-
-// Import and use routes
-// app.use('/', router);
-
-
 
 module.exports = router;
