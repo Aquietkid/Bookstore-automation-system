@@ -14,14 +14,6 @@ const connection = require("../config/persistence");
     
     PARAMS I GIVE: 
     ItemID
-
-    QUERY:
-    SELECT Item.Name , Supplier.Name, SupplierItem.Price
-    FROM SupplierItem 
-    JOIN Supplier ON Supplier.ID = SupplierItem.SupplierID
-    JOIN Item ON Item.ID = SupplierItem.ItemID
-    WHERE ItemID = 2;
-    
 */
 
 router.get('/:id', (req, res) => {
