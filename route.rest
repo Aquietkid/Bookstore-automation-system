@@ -1,11 +1,3 @@
-GET http://localhost:3000/supplier
-
-###
-
-GET http://localhost:3000/supplier/
-
-###
-
 GET http://localhost:20419/supplier/4
 
 ###
@@ -19,3 +11,25 @@ GET http://localhost:20419/supplier/20
 ### 
 
 GET http://localhost:20419/supplier/2
+
+
+### 
+
+POST http://localhost:20419/inventory/add/item/itemName/200/12
+Content-Type: application/json
+
+{
+    "itemName": "testItem",
+    "price": 420,
+    "qty": 10
+}
+
+###
+
+DELETE http://localhost:20419/inventory/delete/item/22
+
+
+###
+
+
+GET http://localhost:20419/inventory/checkStock/1

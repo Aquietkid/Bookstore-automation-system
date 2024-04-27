@@ -14,13 +14,14 @@ const connection = require("../config/persistence");
     
     PARAMS I GIVE: 
     ItemID
+
+
 */
 
 router.get('/:id', (req, res) => {
     connection.connect(function (err) {
         if (err) throw err;
         const ItemID = req.params.id;
-        // console.log('DB Connected!');
         var sql = 'SELECT Item.Name AS ItemName, Supplier.ID AS SupplierID, Supplier.Name AS SupplierName, SupplierItem.Price AS SupplierRate ' +
         'FROM SupplierItem '+
         'JOIN Supplier ON Supplier.ID = SupplierItem.SupplierID '+
