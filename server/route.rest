@@ -1,0 +1,58 @@
+GET http://localhost:20418/supplier/4
+
+###
+
+GET http://localhost:20418/supplier/5
+
+###
+
+GET http://localhost:20418/supplier/20
+
+### 
+
+GET http://localhost:20418/supplier/2
+
+
+### 
+
+POST http://localhost:20418/inventory/add/item/itemName/200/12
+
+
+###
+
+DELETE http://localhost:20419/inventory/delete/item/22
+
+
+###
+
+
+GET http://localhost:20419/inventory/checkStock/1
+
+###
+
+PUT http://localhost:5000/inventory/3/updateQuantity
+Content-Type: application/json
+
+{
+    "quantityChange": -2
+}
+###
+PUT http://localhost:5000/inventory/1/updatePrice
+Content-Type: application/json
+
+{
+    "newPrice": 500
+}
+###
+POST http://localhost:5000/inventory/placeOrder
+###
+
+GET http://localhost:5000/inventory/4
+
+###
+GET http://localhost:5000/inventory/
+
+
+###
+
+http://localhost:20417/supplier/all/items
