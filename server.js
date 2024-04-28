@@ -15,9 +15,8 @@ app.listen(port, () => {
 const suppliersRouter = require('./routes/supplier')
 app.use('/supplier', suppliersRouter)
 
-// Import and use routes
-// app.use('/', router);
-
+const inventoryRouter = require('./routes/inventory')
+app.use('/inventory', inventoryRouter)
 
 
 module.exports = router;
