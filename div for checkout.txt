@@ -1,0 +1,11 @@
+  </div>
+        <!-- <div class="current-order">
+            <!-- Current order content goes here -->
+            <h2>Current Order</h2>
+            <!-- Display selected items or current order -->
+            <ul>
+                <!-- Selected items will be displayed dynamically here -->
+            </ul>
+            <!-- Checkout button -->
+            <button class="btn-checkout">Checkout</button>
+        </div> 

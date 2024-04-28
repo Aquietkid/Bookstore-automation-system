@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quotation</title>
+    <link rel="stylesheet" href="qstyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="Home.html">
+                        <img src="logo.png" alt="Logo">
+                    </a>
+                </div>
+               
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Get Quotation</h1>
+        <div class="form-group">
+            <label for="item">Select an item:</label>
+            <select id="item" class="select-item">
+                <option value="1">Book</option>
+                <option value="2">Raw Material</option>
+            </select>
+        </div>
+        <button class="btn" onclick="fetchQuotation()">Get Quotation</button>
+        <div id="quotationResult" class="quotation-result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
