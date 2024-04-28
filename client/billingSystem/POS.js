@@ -21,6 +21,7 @@ function addToCart() {
     const itemDropdown = document.getElementById('itemDropdown');
     const selectedItem = itemDropdown.value;
     const itemName = itemDropdown.options[itemDropdown.selectedIndex].text;
+    const itemQty = document.getElementById('quantity').value;
 
     // Add selected item to the table
     const itemTableBody = document.getElementById('itemTableBody');
@@ -29,7 +30,7 @@ function addToCart() {
         <td>${selectedItem}</td>
         <td>${itemName}</td>
         <td>Price Placeholder</td>
-        <td>Quantity Placeholder</td>
+        <td>${itemQty}</td>
     `;
     itemTableBody.appendChild(newRow);
 }
