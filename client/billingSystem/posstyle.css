@@ -1,0 +1,118 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.logo img {
+    max-width: 100px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.item-catalog {
+    margin-top: 20px; /* Add margin to create space below the navbar */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.add-to-cart {
+    margin-bottom: 20px;
+}
+
+.add-to-cart h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.add-to-cart .form-group {
+    margin-bottom: 10px;
+}
+
+.add-to-cart label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-to-cart select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.add-to-cart button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart button:hover {
+    background-color: #0056b3;
+}
+
+
+.add-to-cart .form-group {
+    margin-bottom: 10px;
+}
+
+.add-to-cart .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-to-cart .form-group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+

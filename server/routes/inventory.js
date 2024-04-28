@@ -21,7 +21,7 @@ router.post('/add/item/:itemName/:price/:qty', (req, res) => {
 })
 
 // Delete an item 
-router.delete('/delete/item/:id', (req, res) => {
+router.delete('/delete/item/:id',  (req, res) => {
     connection.connect(function (err) {
         if (err) throw err;
         const itemID = req.params.id;
