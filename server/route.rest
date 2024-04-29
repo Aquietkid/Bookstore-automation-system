@@ -20,7 +20,7 @@ POST http://localhost:20418/inventory/add/item/itemName/200/12
 
 ###
 
-DELETE http://localhost:20419/inventory/delete/item/22
+GET http://localhost:20419/inventory/delete/item/20
 
 
 ###

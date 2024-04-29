@@ -21,23 +21,50 @@ router.post('/add/item/:itemName/:price/:qty', (req, res) => {
 })
 
 // Delete an item 
-router.delete('/delete/item/:id',  (req, res) => {
-    connection.connect(function (err) {
-        if (err) throw err;
-        const itemID = req.params.id;
+// router.get('/delete/:id', async (req, res) => {
 
-        var sql = 'DELETE FROM inventory WHERE id = ?;'
-        connection.query(sql, [itemID], function (err, result) {
-            if (err) throw err;
-            else if (result.affectedRows == 0) {
-                return res.send('No item deleted. Check if ID was correct.');
-            }
-            else {
-                return res.json({ message: "Item deleted!" });
-            }
-        });
-    });
-})
+//   console.log(req.params);
+
+//     connection.connect(function (err) {
+//         if (err) throw err;
+//         const itemID = req.params.id;
+
+//         var sql = 'DELETE FROM inventory WHERE id = ?;'
+//         connection.query(sql, [itemID], function (err, result) {
+//             if (err) throw err;
+//             else if (result.affectedRows == 0) {
+//                 return res.send('No item deleted. Check if ID was correct.');
+//             }
+//             else {
+//                 return res.json({ message: "Item deleted!" });
+//             }
+//         });
+//     });
+// })
+
+//GPT DELETE ITEM
+router.delete('/delete/:id', async (req, res) => { // Changed router method to DELETE
+
+  console.log(req.params);
+  console.log('Delete Item API called');
+
+  // Assuming 'connection' is your MySQL connection
+
+  const itemID = req.params.id;
+
+  var sql = 'DELETE FROM inventory WHERE id = ?;';
+  connection.query(sql, [itemID], function (err, result) {
+      if (err) {
+          console.error(err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      } else if (result.affectedRows == 0) {
+          return res.status(404).json({ message: 'No item deleted. Check if ID was correct.' });
+      } else {
+          return res.status(200).json({ message: 'Item deleted!' });
+      }
+  });
+});
+
 
 // Get the quantity in stock for an item
 router.get('/checkStock/:id', (req, res) => {

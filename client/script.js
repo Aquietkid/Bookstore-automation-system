@@ -3,6 +3,7 @@ function fetchQuotation() {
     // Get the selected item ID from the dropdown
     const selectedItem = document.getElementById('item').value;
 
+
     // Make a GET request to the backend API endpoint
     fetch(`http://localhost:20419/supplier/${selectedItem}`)
         .then(response => {
@@ -60,9 +61,9 @@ function displayError() {
 function fetchItems() {
     fetch('http://localhost:20419/supplier/all/items')
         .then(response => {
-            // if (!response.ok) {
-            //     throw new Error('Network response was not ok');
-            // }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             console.log('Above return response.json()', response);
             return response.json();
         })
@@ -100,3 +101,5 @@ function populateDropdown(items) {
 
 
 window.addEventListener(onload, fetchItems());
+
+
