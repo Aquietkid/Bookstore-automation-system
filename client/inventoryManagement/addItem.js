@@ -1,7 +1,7 @@
 
 function addItem() {
 
-
+    event.preventDefault();
     const itemName = document.getElementById('Name').value;
     const itemPrice = document.getElementById('Price').value;
     const itemQty = document.getElementById('Quantity').value;
