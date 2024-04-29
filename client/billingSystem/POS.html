@@ -31,7 +31,7 @@
        
         <div class="form-group">
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" class="quantity-input" min="1">
+            <input type="number" id="quantity" class="quantity-input" min="1" value="1">
         </div>
         
         
@@ -53,6 +53,40 @@
             </table>
         </div>
     </div>
+
+    <div class="checkout-btn">
+        <button onclick="openModal()">Checkout</button>
+    </div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>Are you sure you want to checkout?</p>
+        <button id="confirmCheckout" onclick="checkOut()">Confirm Checkout</button>
+        <button id="cancelCheckout" onclick="closeModal()">Cancel</button>
+    </div>
+</div>
+
+<!-- Clear Button -->
+<div class="clear-btn">
+    <button onclick="openClearModal()">Clear Item</button>
+</div>
+
+<!-- Clear Modal -->
+<div id="clearModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeClearModal()">&times;</span>
+        <p>Enter the Item ID to clear:</p>
+        <input type="text" id="clearItemId" class="clear-item-input" placeholder="Item ID">
+        <button onclick="clearItem()">Clear</button>
+    </div>
+</div>
+
+  
+
+    
 
     <script src="POS.js"></script> <!-- Ensure the correct path to your script file -->
 </body>
