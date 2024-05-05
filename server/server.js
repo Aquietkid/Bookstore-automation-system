@@ -20,5 +20,8 @@ app.use('/supplier', suppliersRouter)
 const inventoryRouter = require('./routes/inventory')
 app.use('/inventory', inventoryRouter)
 
+const posRouter = require('./routes/pos')
+app.use('/pos', posRouter)
+
 
 module.exports = router;

@@ -32,6 +32,7 @@ header {
     position: absolute;
     left: 0px;
     top: 0px;
+    transform: scale(1.25);
 }
 
 
@@ -59,7 +60,7 @@ header {
 
 
 .hero {
-    background-image: url('backg.jpg'); /* Replace 'your-image.jpg' with the path to your background image */
+    background-image: url('../assets/backg.jpg'); /* Replace 'your-image.jpg' with the path to your background image */
     background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the background image */
     background-position-y: center;

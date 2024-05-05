@@ -4,15 +4,12 @@ const router = express.Router()
 const connection = require("../config/persistence");
 
 
-router.get('/:id', (req, res) => {
+
+router.get('', (req, res) => {
     connection.connect(function (err) {
         if (err) throw err;
         const ItemID = req.params.id;
-        var sql = 'SELECT Item.Name AS ItemName, Supplier.ID AS SupplierID, Supplier.Name AS SupplierName, SupplierItem.Price AS SupplierRate ' +
-        'FROM SupplierItem '+
-        'JOIN Supplier ON Supplier.ID = SupplierItem.SupplierID '+
-        'JOIN Item ON Item.ID = SupplierItem.ItemID '+
-        'WHERE ItemID = ?;';
+        var sql = 'SELECT ';
         connection.query(sql, [ItemID], function (err, result) {
             if (err) throw err;
             else if(result.length == 0) {
@@ -41,6 +38,5 @@ router.get('/:id', (req, res) => {
         });
     });
 })
-
 
 module.exports = router

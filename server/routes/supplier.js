@@ -4,7 +4,7 @@ const router = express.Router()
 const connection = require("../config/persistence");
 
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     connection.connect(function (err) {
         if (err) throw err;
         const ItemID = req.params.id;
@@ -41,6 +41,7 @@ router.get('/:id', (req, res) => {
         });
     });
 })
+
 
 
 // GPT try 3

@@ -61,4 +61,39 @@ header {
     position: absolute;
     left: 0px;
     top: 0px;
+    transform: scale(1.25);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.select-item {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.quotation-result {
+    text-align: center;
+    margin-top: 20px;
 }
