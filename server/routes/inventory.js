@@ -188,9 +188,7 @@ router.get('/price/:id', async (req, res) => {
   connection.connect(function (err) {
     if (err) throw err;
     const ItemID = req.params.id;
-
-    var sql = 'SELECT price FROM inventory WHERE ItemID = ?;';
-
+    var sql = 'SELECT price FROM inventory WHERE id = ?;';
     connection.query(sql, [ItemID], function (err, result) {
       if (err) throw err;
       else if (result.length == 0) {
@@ -201,7 +199,7 @@ router.get('/price/:id', async (req, res) => {
       }
     });
   });
-})
+});
 
 
 

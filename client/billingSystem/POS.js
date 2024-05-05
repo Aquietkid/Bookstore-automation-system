@@ -4,7 +4,14 @@ async function fetchItems() {
         //@Aquietkid fix the API: access inventory DB, not supplier
         const response = await fetch('http://localhost:20419/inventory/all/items');
         const data = await response.json();
+
         const itemDropdown = document.getElementById('itemDropdown');
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Select an item';
+        itemDropdown.appendChild(defaultOption);
+
         data.forEach(item => {
             const option = document.createElement('option');
             option.value = item.ID; // Assuming each item has an ID
@@ -19,18 +26,19 @@ async function fetchItems() {
 }
 
 // Function to add selected item to the cart
-function addToCart() {
+async function addToCart() {
     const itemDropdown = document.getElementById('itemDropdown');
-    const selectedItem = itemDropdown.value;
+    const itemID = itemDropdown.value;
     const itemName = itemDropdown.options[itemDropdown.selectedIndex].text;
     const itemQty = document.getElementById('quantity').value;
 
-    const itemPrice = getItemPrice(selectedItem).value;
+    const itemPrice = await getItemPrice(itemID);
+
     // Add selected item to the table
     const itemTableBody = document.getElementById('itemTableBody');
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-        <td>${selectedItem}</td>
+        <td>${itemID}</td>
         <td>${itemName}</td>
         <td>${itemPrice}</td>
         <td>${itemQty}</td>
@@ -38,44 +46,19 @@ function addToCart() {
     itemTableBody.appendChild(newRow);
 }
 
-// Fetch items when the page loads
-// window.onload = function() {
-//     fetchItems();
-// };
 
-
-// async function getItemPrice(id) {
-//     try {
-//         //console.log(id);
-//         //@Aquietkid fix the API: access inventory DB, not supplier
-//         const response = await fetch(`http://localhost:20419/inventory/${id}`);
-//         const data = await response.json();
-//         console.log(data);
-//         return data;
-//     } catch (error) {
-//         console.error('Error fetching items:', error);
-//     }
-// }
-
-//GPT VERSION
 async function getItemPrice(id) {
     try {
-        const response = await fetch(`http://localhost:20419/inventory/price/id`);
+        const response = await fetch(`http://localhost:20419/inventory/price/${id}`);
         if (!response.ok) {
             throw new Error('Failed to fetch item price');
         }
         const data = await response.json();
-        console.log(data);
-        return data;
+        return JSON.stringify(data.data.price);
     } catch (error) {
         console.error('Error fetching item price:', error.message);
-        // Display error message to the user or handle it gracefully
     }
 }
-
-
-
-window.addEventListener(onload, fetchItems());
 
 
 //Checkout Confirmation 
@@ -127,5 +110,6 @@ function clearItem() {
     closeClearModal();
 }
 
+window.addEventListener(onload, fetchItems());
 
 

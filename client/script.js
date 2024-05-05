@@ -39,7 +39,7 @@ function displayQuotation(data) {
             <p>Item: ${ItemName}</p>
             <p>Supplier ID: ${SupplierID}</p>
             <p>Supplier Name: ${SupplierName}</p>
-            <p>Supplier Rate: ${SupplierRate}</p>
+            <p>Supplier Rate: Rs. ${SupplierRate}</p>
         `;
         // Set the HTML content to display the quotation
         quotationResultElement.innerHTML = quotationHTML;
