@@ -36,6 +36,15 @@ async function addToCart() {
 
     // Add selected item to the table
     const itemTableBody = document.getElementById('itemTableBody');
+
+    const itemTable = document.getElementById('itemTable');
+    for (var ii = 0, row; row = itemTable.rows[ii]; ii++) {
+        if (row.cells[0].innerText == itemID) {
+            row.cells[3].innerText = parseInt(row.cells[3].innerText) + parseInt(itemQty);
+            return;
+        }
+    }
+
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td>${itemID}</td>
