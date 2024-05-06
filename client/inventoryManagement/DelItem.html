@@ -23,17 +23,27 @@
 
   <div class="Card">
     <h1>Delete Item</h1>
-    <form>
-      <div class="form-group">
+    
+    <form onsubmit="deleteItem(event)">
+      <!-- ... rest of your form ... -->
+      <!-- <div class="form-group">
         <label for="ItemID">Enter Item ID to delete</label>
         <input id="ItemID" placeholder="Enter ID of item" class="form-control">
-      </div>
-
+      </div> -->
+  
+      <!-- //Added dropdown to select item -->
+      <div class="form-group">
+        <label for="itemDropdown" style="font-size: large;">Select an item :</label>
+        <select id="itemDropdown" class="select-item"></select>
+    </div>
+  
       <div class="button-group">
         <a href="InventoryManagement.html"><button type="button" class="btn btn-secondary">Cancel</button></a>
         <button type="submit" class="btn btn-primary" onclick="deleteItem()">Confirm</button>
       </div>
-    </form>
+  </form>
+  
+
   </div>
   <script  src="delScript.js"></script>
 </body>
