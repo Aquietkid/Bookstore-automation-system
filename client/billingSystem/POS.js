@@ -1,7 +1,6 @@
 // Function to fetch items from the database and populate the dropdown menu
 async function fetchItems() {
     try {
-        //@Aquietkid fix the API: access inventory DB, not supplier
         const response = await fetch('http://localhost:20419/inventory/all/items');
         const data = await response.json();
 
@@ -34,6 +33,13 @@ async function addToCart() {
 
     const itemPrice = await getItemPrice(itemID);
 
+    //Checking if the quantity is less than 1
+    if(itemQty < 1)
+        {
+            alert('Quantity cannot be less than 1!');
+            return;
+        }
+
     // Add selected item to the table
     const itemTableBody = document.getElementById('itemTableBody');
 
@@ -41,6 +47,9 @@ async function addToCart() {
     for (var ii = 0, row; row = itemTable.rows[ii]; ii++) {
         if (row.cells[0].innerText == itemID) {
             row.cells[3].innerText = parseInt(row.cells[3].innerText) + parseInt(itemQty);
+            const price = document.getElementById("total-price-value");
+            const intPrice = parseInt(price.innerText);
+            document.getElementById('total-price-value').innerText = parseInt(intPrice + (parseInt(itemPrice) * parseInt(itemQty)));
             return;
         }
     }
@@ -53,6 +62,10 @@ async function addToCart() {
         <td>${itemQty}</td>
     `;
     itemTableBody.appendChild(newRow);
+
+    const price = document.getElementById("total-price-value");
+    const intPrice = parseInt(price.innerText);
+    document.getElementById('total-price-value').innerText = parseInt(intPrice + (parseInt(itemPrice) * parseInt(itemQty)));
 }
 
 
@@ -117,6 +130,35 @@ function clearItem() {
 
     // Close the clear modal
     closeClearModal();
+}
+
+
+async function checkOut() {
+    event.preventDefault();
+    const itemTable = document.getElementById('itemTable');
+    for (var ii = 0, row; row = itemTable.rows[ii]; ii++) {
+        var itemID = row.cells[0].innerText;
+        var quantityChange = row.cells[3].innerText;
+
+        try {
+            console.log('Trying to checkout');
+            const response = await fetch(`http://localhost:20419/inventory/${itemID}/${quantityChange}/updateQuantity`,{
+                method: 'PUT'
+            });
+            // if (!response.ok) {
+            //     console.log(response);
+            //     console.log(itemID);
+            //     console.log(quantityChange);
+            //     console.log('Response unokay');
+            //     throw new Error('Failed to contact server');
+            // }
+            const data = await response.json();
+            console.log("response is ", response.ok);
+            console.log(data);
+        } catch (error) {
+            console.error('Cannot place order: ', error.message);
+        }
+    }
 }
 
 window.addEventListener(onload, fetchItems());

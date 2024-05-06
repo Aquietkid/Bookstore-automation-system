@@ -58,6 +58,18 @@
         <button onclick="openModal()">Checkout</button>
     </div>
 
+    <div class="clear-btn">
+        <button onclick="openClearModal()">Clear Item</button>
+    </div>
+
+    <span id = "total-price">
+        <div>Total: Rs. </div>
+        <div id="total-price-value">
+            <!-- The total price will update as items are added to the cart -->
+            0
+        </div>
+    </span>
+
 <!-- Modal -->
 <div id="myModal" class="modal">
     <!-- Modal content -->
@@ -69,12 +81,8 @@
     </div>
 </div>
 
-<!-- Clear Button -->
-<div class="clear-btn">
-    <button onclick="openClearModal()">Clear Item</button>
-</div>
 
-<!-- Clear Modal -->
+
 <div id="clearModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeClearModal()">&times;</span>
@@ -88,6 +96,6 @@
 
     
 
-    <script src="POS.js"></script> <!-- Ensure the correct path to your script file -->
+    <script src="POS.js"></script> 
 </body>
 </html>
