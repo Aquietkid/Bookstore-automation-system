@@ -33,6 +33,13 @@ async function addToCart() {
 
     const itemPrice = await getItemPrice(itemID);
 
+    //Checking if the quantity is less than 1
+    if(itemQty < 1)
+        {
+            alert('Quantity cannot be less than 1!');
+            return;
+        }
+
     // Add selected item to the table
     const itemTableBody = document.getElementById('itemTableBody');
 
