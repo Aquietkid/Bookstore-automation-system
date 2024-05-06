@@ -233,5 +233,9 @@ th {
 }
 
 
-
-
+#total-price {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    
+}

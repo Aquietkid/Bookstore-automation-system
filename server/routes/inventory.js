@@ -82,7 +82,7 @@ router.put('/:id/updateQuantity', (req, res) => {
       return res.send('Item not found or insufficient quantity for decrement.');
     }
     res.send(`Inventory updated successfully. The quantity was ${quantityChange > 0 ? 'increased' : 'decreased'}.`);
-
+    
 
   });
 });

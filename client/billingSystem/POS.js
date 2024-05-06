@@ -41,6 +41,9 @@ async function addToCart() {
     for (var ii = 0, row; row = itemTable.rows[ii]; ii++) {
         if (row.cells[0].innerText == itemID) {
             row.cells[3].innerText = parseInt(row.cells[3].innerText) + parseInt(itemQty);
+            const price = document.getElementById("total-price-value");
+            const intPrice = parseInt(price.innerText);
+            document.getElementById('total-price-value').innerText = parseInt(intPrice + (parseInt(itemPrice) * parseInt(itemQty)));
             return;
         }
     }
@@ -53,6 +56,10 @@ async function addToCart() {
         <td>${itemQty}</td>
     `;
     itemTableBody.appendChild(newRow);
+
+    const price = document.getElementById("total-price-value");
+    const intPrice = parseInt(price.innerText);
+    document.getElementById('total-price-value').innerText = parseInt(intPrice + (parseInt(itemPrice) * parseInt(itemQty)));
 }
 
 
@@ -117,6 +124,11 @@ function clearItem() {
 
     // Close the clear modal
     closeClearModal();
+}
+
+
+async function checkOut() {
+    
 }
 
 window.addEventListener(onload, fetchItems());
