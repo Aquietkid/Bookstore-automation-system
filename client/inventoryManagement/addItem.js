@@ -1,4 +1,40 @@
+// function addItem(event) {
+//     event.preventDefault(); // Prevent the default form submission behavior
+//     const itemName = document.getElementById('Name').value;
+//     const itemPrice = document.getElementById('Price').value;
+//     const itemQty = document.getElementById('Quantity').value;
 
+//     const postData = {
+//         itemName: itemName,
+//         itemPrice: itemPrice,
+//         itemQty: itemQty
+//     };
+
+//     // Configuration for the fetch request
+//     const requestOptions = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(postData)
+//     };
+
+//     fetch(`http://localhost:20419/inventory/add/item`, requestOptions)
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             console.log('Response from server:', data);
+//             alert('Item added successfully!'); // Alert the user that the item was added
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//             alert('Failed to add item: ' + error.message); // Alert the user about the error
+//         });
+// }
 function addItem() {
 
     event.preventDefault();
@@ -30,31 +66,12 @@ function addItem() {
         })
         .then(data => {
             console.log('Response from server:', data);
+            alert('Item added successfully!'); // Alert the user that the item was added
         })
         .catch(error => {
             console.error('Error:', error);
+            alert('Failed to add item: ' + error.message); // Alert the user about the error
         });
 
-
-    // fetch(`http://localhost:20419/inventory/add/item/${itemName}/${itemPrice}/${itemQty}`)
-    //     .then(response => {
-    //         // Check if the response is successful (status code 200)
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         // Parse the JSON response
-    //         return response.json();
-    //     })
-    //     .then(data => {
-
-    //         // Display the quotation result on the HTML page
-    //         console.log(data);
-    //     })
-    //     .catch(error => {
-    //         // Handle any errors that occurred during the fetch
-    //         console.error('There was a problem with the fetch operation:', error);
-    //         // Display an error message on the HTML page
-
-    //     });
 
 }
