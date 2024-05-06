@@ -61,9 +61,9 @@ router.get('/checkStock/:id', (req, res) => {
 })
 
 // Update the quantity of an item
-router.put('/:id/updateQuantity', (req, res) => {
+router.put('/:id/:quantityChange/updateQuantity', (req, res) => {
   const itemId = parseInt(req.params.id);
-  const quantityChange = parseInt(req.body.quantityChange);
+  const quantityChange = parseInt(req.params.quantityChange);
 
   if (!quantityChange) {
     return res.send('Please specify the quantity change.');
@@ -71,7 +71,7 @@ router.put('/:id/updateQuantity', (req, res) => {
 
   // Determine the SQL query based on the sign of quantityChange
   const sqlUpdate = quantityChange > 0 ?
-    'UPDATE inventory SET quantity = quantity + ? WHERE id = ?;' :
+    'UPDATE inventory SET quantity = quantity - ? WHERE id = ?;' :
     'UPDATE inventory SET quantity = GREATEST(0, quantity - ABS(?)) WHERE id = ?;';
 
   connection.query(sqlUpdate, [Math.abs(quantityChange), itemId], (error, results) => {
@@ -81,9 +81,10 @@ router.put('/:id/updateQuantity', (req, res) => {
     if (results.affectedRows === 0) {
       return res.send('Item not found or insufficient quantity for decrement.');
     }
-    res.send(`Inventory updated successfully. The quantity was ${quantityChange > 0 ? 'increased' : 'decreased'}.`);
-    
-
+    res.status(200).json({
+      success:true,
+      message:"Order placed"
+    })
   });
 });
 

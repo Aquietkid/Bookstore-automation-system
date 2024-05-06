@@ -1,7 +1,6 @@
 // Function to fetch items from the database and populate the dropdown menu
 async function fetchItems() {
     try {
-        //@Aquietkid fix the API: access inventory DB, not supplier
         const response = await fetch('http://localhost:20419/inventory/all/items');
         const data = await response.json();
 
@@ -128,7 +127,31 @@ function clearItem() {
 
 
 async function checkOut() {
-    
+    event.preventDefault();
+    const itemTable = document.getElementById('itemTable');
+    for (var ii = 0, row; row = itemTable.rows[ii]; ii++) {
+        var itemID = row.cells[0].innerText;
+        var quantityChange = row.cells[3].innerText;
+
+        try {
+            console.log('Trying to checkout');
+            const response = await fetch(`http://localhost:20419/inventory/${itemID}/${quantityChange}/updateQuantity`,{
+                method: 'PUT'
+            });
+            // if (!response.ok) {
+            //     console.log(response);
+            //     console.log(itemID);
+            //     console.log(quantityChange);
+            //     console.log('Response unokay');
+            //     throw new Error('Failed to contact server');
+            // }
+            const data = await response.json();
+            console.log("response is ", response.ok);
+            console.log(data);
+        } catch (error) {
+            console.error('Cannot place order: ', error.message);
+        }
+    }
 }
 
 window.addEventListener(onload, fetchItems());
