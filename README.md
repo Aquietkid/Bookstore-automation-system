@@ -1,3 +1,11 @@
+This project automates the core operations of a bookstore, helping streamline their daily business. It provides inventory management, a point-of-sale subsystem, and more.
+
+
+# Tools Used
+
+The front-end of the application is built in plain HTML, CSS, and JavaScript. The back-end uses NodeJS with an ExpressJS server. An SQL relational database is used for persistent storage.
+
+
 # To execute the application: 
 1. clone the repo into your IDE
 2. open a new terminal in ./server
